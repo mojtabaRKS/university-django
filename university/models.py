@@ -11,6 +11,7 @@ class Course(models.Model):
     title = models.CharField(max_length=255)
     theorical_units = models.IntegerField(default=1)
     practical_units = models.IntegerField(default=0)
+    price = models.IntegerField
 
 
 class Chapter(models.Model):
@@ -33,8 +34,11 @@ class Staff(models.Model):
 
 
 class Presentation(models.Model):
-    STATUSES = ("OPEN", "CANCEL", "")
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     professor = models.ForeignKey(Professor, on_delete=models.CASCADE)
-    status = models.enums
+    status = models.CharField
     code = models.IntegerField
+    day = models.CharField
+    start_at = models.DateTimeField
+    end_at = models.DateTimeField
+    class_type = models.CharField(choices=('in-person', 'online'))
