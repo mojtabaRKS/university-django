@@ -77,7 +77,7 @@ class UserTerm(models.Model):
 
 class Exam(models.Model):
     presentation = models.ForeignKey(Presentation, on_delete=models.CASCADE)
-    file = 
+    file = GenericForeignKey('File')
 
 
 class UserCourse(models.Model):
@@ -87,4 +87,3 @@ class UserCourse(models.Model):
     score = models.IntegerField
     status = models.CharField(choices=('passed', 'rejected', 'deleted'))
     exam_file = GenericForeignKey('File')
-    
